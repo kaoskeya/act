@@ -1,5 +1,22 @@
-
 <template name="UserLogin">
-  client/views/user_login/user_login.html
+	{{#if currentUser}}
+		{{#if organisationsOwned}}
+
+			<select id="location" multiple></select>
+
+			<select id="organisation">
+				<option>Select Organisation</option>
+			{{#each organisationsOwned}}
+				<option value="{{ _id }}">{{ name }}</option>
+			{{/each}}
+			</select>
+
+			{{> quickForm collection="Posts" id="insertPostForm" type="insert" fields="title, content, radius, location_string" }}
+			<a class="btn btn-success" id="postUpdate">Post an update</a>
+		{{/if}}
+		Feed here.
+	{{else}}
+		Please login to view your feed.
+	{{/if}}
 </template>
 

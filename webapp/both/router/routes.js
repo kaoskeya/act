@@ -15,4 +15,7 @@ Router.map(function () {
       this.route('home', {path: '/'});
   */
   this.route('user.login', {path: '/'});
+  this.route('organisations', {path: '/organisations'});
+  this.route('create.organisation', {path: '/organisations/create'});
+  this.route('post', {path: '/post'});
 });
