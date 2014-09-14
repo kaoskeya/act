@@ -22,7 +22,7 @@ Template.Organisations.helpers({
   },
 
   following : function(){
-    return !_.isEmpty(Subscriptions.find({user_id : Meteor.userId(), oid : this._id}))
+    return !Subscriptions.find({user_id : Meteor.userId(), oid : this._id}).count()
   }
   /*
    * Example:
