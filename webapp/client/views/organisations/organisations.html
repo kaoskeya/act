@@ -9,7 +9,13 @@
 		<div class="jumbotron">
 			<h1>{{ name }}</h1>
 			<p>{{ description }}</p>
-			<p><a class="btn btn-success btn-lg" role="button">Follow</a></p>
+			<p>
+				{{#if follwing}}
+					<a class="btn btn-success btn-lg" id="follow_button" role="button">Follow</a>
+				{{else}}
+					<a class="btn btn-danger btn-lg" id="follow_button" role="button">Unfollow</a>
+				{{/if}}
+			</p>
 		</div>
 	{{/each}}
 </template>

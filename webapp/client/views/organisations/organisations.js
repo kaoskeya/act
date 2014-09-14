@@ -9,11 +9,20 @@ Template.Organisations.events({
    *
    *  }
    */
+   'click #follow_button' : function(){
+      Meteor.call('/app/subscribe', this._id, function (error, result) {
+        console.log(arguments)
+      });
+   }
 });
 
 Template.Organisations.helpers({
   organisations: function() {
     return Organisation.find().fetch()
+  },
+
+  following : function(){
+    return !_.isEmpty(Subscriptions.find({user_id : Meteor.userId(), oid : this._id}))
   }
   /*
    * Example:
