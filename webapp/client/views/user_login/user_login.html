@@ -2,13 +2,13 @@
 	{{#if currentUser}}
 		{{#if organisationsOwned}}
 
-			<select id="location" multiple></select>
+			<select id="location" multiple required></select>
 
 			<select id="organisation">
-				<option>Select Organisation</option>
-			{{#each organisationsOwned}}
-				<option value="{{ _id }}">{{ name }}</option>
-			{{/each}}
+			<option>Select Organisation</option>
+				{{#each organisationsOwned}}
+					<option value="{{ _id }}">{{ name }}</option>
+				{{/each}}
 			</select>
 
 			{{> quickForm collection="Posts" id="insertPostForm" type="insert" fields="title, content, radius, location_string" }}
@@ -17,6 +17,9 @@
 		Feed here.
 	{{else}}
 		Please login to view your feed.
+	{{/if}}
+
+	{{#if init_locations}}
 	{{/if}}
 </template>
 
