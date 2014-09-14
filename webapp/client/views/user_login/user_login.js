@@ -27,7 +27,7 @@ Template.UserLogin.helpers({
     return Organisation.ownsOrganisation( Meteor.userId() );
   },
   posts: function(){
-    return Posts.find().fetch()
+    return Posts.find({}, { sort: { timestamp: -1 } }).fetch()
   },
   organisationName: function(oid) {
     return Organisation.findOne({ _id: oid }).name;
