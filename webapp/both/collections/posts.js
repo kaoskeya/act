@@ -5,8 +5,8 @@ Posts.attachSchema(new SimpleSchema({
   content: { type: String, label: "Content" },
   timestamp: { type: Number },
   organisation_id: { type: String },
-  radius: { type: Number },
-  location_string: { type: String },
+
+
   location: { type: Array },
   "location.$": { type: Object }
 }));

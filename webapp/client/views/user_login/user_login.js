@@ -9,6 +9,10 @@ Template.UserLogin.events({
   },
   'click #postUpdate': function(e, tmpl) {
 
+  },
+  'click #showNewPost': function(e, tmpl) {
+    $("#showNewPost").hide();
+    $("#newPost").removeClass('hide');
   }
   /*
    * Example:
@@ -21,6 +25,15 @@ Template.UserLogin.events({
 Template.UserLogin.helpers({
   organisationsOwned: function() {
     return Organisation.ownsOrganisation( Meteor.userId() );
+  },
+  posts: function(){
+    return Posts.find().fetch()
+  },
+  organisationName: function(oid) {
+    return Organisation.findOne({ _id: oid }).name;
+  },
+  printTime: function(ts) {
+    return moment.unix(ts).format();
   }
   /*
    * Example:

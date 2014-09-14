@@ -12,6 +12,9 @@ Template.Organisations.events({
 });
 
 Template.Organisations.helpers({
+  organisations: function() {
+    return Organisation.find().fetch()
+  }
   /*
    * Example:
    *  items: function () {

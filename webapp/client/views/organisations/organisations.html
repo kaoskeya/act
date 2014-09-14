@@ -1,6 +1,15 @@
 <template name="Organisations">
 	{{#if currentUser}}
-		<a class="btn" href="{{ pathFor 'create.organisation' }}">Create Organisation</a>
+		<div class="text-right">
+			<a class="btn btn-primary" href="{{ pathFor 'create.organisation' }}">Create Organisation</a>
+			<hr />
+		</div>
 	{{/if}}
-	List of organisations
+	{{#each organisations}}
+		<div class="jumbotron">
+			<h1>{{ name }}</h1>
+			<p>{{ description }}</p>
+			<p><a class="btn btn-success btn-lg" role="button">Follow</a></p>
+		</div>
+	{{/each}}
 </template>

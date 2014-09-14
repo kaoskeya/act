@@ -32,7 +32,9 @@ AutoForm.hooks({
     after: {
       insert: function(doc, template) {
         console.log(doc)
-        Router.go('user.login');
+        $("#showNewPost").show();
+        $("#newPost").addClass('hide');
+        //Router.go('user.login');
       }
     }
   }

@@ -1,22 +1,43 @@
 <template name="UserLogin">
 	{{#if currentUser}}
-		{{#if organisationsOwned}}
+	{{#if organisationsOwned}}
+	<div id="newPost" class="hide">
+		<label for="location">Location</label>
+		<select id="location" multiple required></select>
 
-			<select id="location" multiple required></select>
-
-			<select id="organisation">
+		<label for="organisation">Organisation</label>
+		<select id="organisation">
 			<option>Select Organisation</option>
-				{{#each organisationsOwned}}
-					<option value="{{ _id }}">{{ name }}</option>
-				{{/each}}
-			</select>
+			{{#each organisationsOwned}}
+			<option value="{{ _id }}">{{ name }}</option>
+			{{/each}}
+		</select>
 
-			{{> quickForm collection="Posts" id="insertPostForm" type="insert" fields="title, content, radius, location_string" }}
-			<a class="btn btn-success" id="postUpdate">Post an update</a>
-		{{/if}}
-		Feed here.
+		{{> quickForm collection="Posts" id="insertPostForm" type="insert" fields="title, content" }}
+		<!-- <a class="btn btn-success" id="postUpdate">Post an update</a> -->
+	</div>
+	<div class="text-right">
+		<button id="showNewPost" class="btn btn-primary">Create a New Post</button>
+	</div>
+	<hr />
+	{{/if}}
+	{{#each posts}}
+	<div class="panel panel-default">
+		<div class="panel-heading">{{ title }}</div>
+		<div class="panel-body">{{ content }}</div>
+		<div class="panel-footer">
+			{{ organisationName organisation_id }}
+			<span class="pull-right">{{ printTime timestamp }}</span>
+		</div>
+	</div>
+	{{/each}}
+
+	<center>
+		<a href="{{ pathFor 'organisations' }}" class="btn btn-primary">Choose Organisations to Follow</a>
+	</center>
+
 	{{else}}
-		Please login to view your feed.
+	Please login to view your feed.
 	{{/if}}
 
 	{{#if init_locations}}
