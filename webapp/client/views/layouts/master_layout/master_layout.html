@@ -1,10 +1,15 @@
 <template name="MasterLayout">
-  {{> Navbar}}
-  <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			{{> yield}}
+	{{> Navbar}}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{{> yield}}
+			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-md-12 text-right">
+			<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> | The ACT Application | Hacked for the #hack4good 0.6 Edition | <a href="https://github.com/kaoskeya/act">Source</a>
+			</div>
+		</div>
 	</div>
 </template>

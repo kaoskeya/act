@@ -2,7 +2,6 @@ Organisation = new Meteor.Collection('organisation');
 
 Organisation.attachSchema(new SimpleSchema({
   name: { type: String, label: "Organisation Name", max: 42 },
-  logo: { type: String, label: "Organisation Logo URL", regEx: SimpleSchema.RegEx.Url },
   description: { type: String, label: "Short Description" },
   admins: { type: Array },
   "admins.$": { type: String }

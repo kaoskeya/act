@@ -8,7 +8,7 @@ Posts.attachSchema(new SimpleSchema({
 
 
   location: { type: Array },
-  "location.$": { type: Object }
+  "location.$": { type: Object, blackbox: true }
 }));
 
 /*

@@ -1,46 +1,99 @@
 <template name="UserLogin">
 	{{#if currentUser}}
-	{{#if organisationsOwned}}
-	<div id="newPost" class="hide">
-		<label for="location">Location</label>
-		<select id="location" multiple required></select>
+		{{#if organisationsOwned}}
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="newPost" class="hide">
+					<label for="location">Location</label>
+					<select id="location" multiple required></select>
 
-		<label for="organisation">Organisation</label>
-		<select id="organisation">
-			<option>Select Organisation</option>
-			{{#each organisationsOwned}}
-			<option value="{{ _id }}">{{ name }}</option>
-			{{/each}}
-		</select>
+					<label for="organisation">Organisation</label>
+					<select id="organisation">
+						<option>Select Organisation</option>
+						{{#each organisationsOwned}}
+						<option value="{{ _id }}">{{ name }}</option>
+						{{/each}}
+					</select>
 
-		{{> quickForm collection="Posts" id="insertPostForm" type="insert" fields="title, content" }}
-		<!-- <a class="btn btn-success" id="postUpdate">Post an update</a> -->
-	</div>
-	<div class="text-right">
-		<button id="showNewPost" class="btn btn-primary">Create a New Post</button>
-	</div>
-	<hr />
-	{{/if}}
-	{{#each posts}}
-	<div class="panel panel-default">
-		<div class="panel-heading">{{ title }}</div>
-		<div class="panel-body">{{ content }}</div>
-		<div class="panel-footer">
-			{{ organisationName organisation_id }}
-			<span class="pull-right">{{ printTime timestamp }}</span>
+					{{> quickForm collection="Posts" id="insertPostForm" type="insert" fields="title, content" }}
+					<!-- <a class="btn btn-success" id="postUpdate">Post an update</a> -->
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<div class="text-right">
+					<button id="showNewPost" class="btn btn-primary">Create a New Post</button>
+				</div>
+			</div>
 		</div>
-	</div>
-	{{/each}}
 
-	<center>
-		<a href="{{ pathFor 'organisations' }}" class="btn btn-primary">Choose Organisations to Follow</a>
-	</center>
+		<hr />
+		{{/if}}
 
+		<div class="row">
+			<div class="col-sm-12">
+				<select id="filter" multiple>
+					<option value="">Filter</option>
+					<optgroup label="Organisations">
+						{{#each organisation}}
+						<option value="{{ _id }}">{{ name }}</option>
+						{{/each}}
+					</optgroup>
+					<optgroup label="Locations">
+						{{#each locations}}
+						<option value="{{ this }}">{{ this }}</option>
+						{{/each}}
+					</optgroup>
+				</select>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="map"></div>
+				<br />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				{{#each posts}}
+				<div class="panel panel-default">
+					<div class="panel-heading">{{ title }}</div>
+					<div class="panel-body">{{ content }}</div>
+					<div class="panel-footer">
+						{{ organisationName organisation_id }}
+						<span class="pull-right">{{ printTime timestamp }}</span>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<br />
+				<a href="{{ pathFor 'organisations' }}" class="btn btn-primary">Choose Organisations to Follow</a>
+			</div>
+		</div>
 	{{else}}
-	Please login to view your feed.
+		<div class="row">
+			<div class="col-sm-12 col-md-8 text-center">
+				<div class="jumbotron">
+					<h1>For Volunteers!</h1>
+					<p>Find climate related activism events in your locality and ACT on them.</p>
+				</div>
+				<div class="jumbotron">
+					<h1>For NGOs!</h1>
+					<p>Post your climate related actisim events to specific and targetted audience and get them to ACT on them.</p>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-4 text-center">
+				<img src="images/fist_simple.png" style="width: 100%;" />
+			</div>
+		</div>
 	{{/if}}
 
-	{{#if init_locations}}
-	{{/if}}
+	{{#if init_locations}}{{/if}}
 </template>
 

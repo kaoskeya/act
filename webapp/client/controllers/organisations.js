@@ -1,6 +1,6 @@
 OrganisationsController = RouteController.extend({
   waitOn: function () {
-  	return [Meteor.subscribe('organisations'), Meteor.subscribe('subscriptions')];
+  	return [Meteor.subscribe('allOrganisations'), Meteor.subscribe('subscriptions')];
   },
 
   data: function () {
